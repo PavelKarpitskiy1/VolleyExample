@@ -7,44 +7,54 @@ import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.ImageLoader;
 import com.android.volley.toolbox.Volley;
 
-public class VolleyHelper {
-    private static RequestQueue requestQueue;
-    private static ImageLoader imageLoader;
+public class VolleyHelper
+{
+	private static RequestQueue requestQueue;
+	private static ImageLoader imageLoader;
 
-    private VolleyHelper() {
-        // no instances
-    }
+	private VolleyHelper()
+	{
+		// no instances
+	}
 
-    static void init(Context context) {
-        requestQueue = Volley.newRequestQueue(context);
+	static void init(Context context)
+	{
+		requestQueue = Volley.newRequestQueue(context);
 
-        int memClass = ((ActivityManager) context
-                .getSystemService(Context.ACTIVITY_SERVICE)).getMemoryClass();
-        // Use 1/8th of the available memory for this memory cache.
-        int cacheSize = 1024 * 1024 * memClass / 8;
-        imageLoader = new ImageLoader(requestQueue, new BitmapLruCache(cacheSize));
-    }
+		int memClass = ((ActivityManager) context.getSystemService(Context.ACTIVITY_SERVICE)).getMemoryClass();
+		// Use 1/8th of the available memory for this memory cache.
+		int cacheSize = 1024 * 1024 * memClass / 8;
+		imageLoader = new ImageLoader(requestQueue, new BitmapLruCache(cacheSize));
+	}
 
-    public static RequestQueue getRequestQueue() {
-        if (requestQueue != null) {
-            return requestQueue;
-        } else {
-            throw new IllegalStateException("RequestQueue not initialized");
-        }
-    }
+	public static RequestQueue getRequestQueue()
+	{
+		if (requestQueue != null)
+		{
+			return requestQueue;
+		}
+		else
+		{
+			throw new IllegalStateException("RequestQueue not initialized");
+		}
+	}
 
-    /**
-     * Returns instance of ImageLoader initialized with {@see FakeImageCache}
-     * which effectively means that no memory caching is used. This is useful
-     * for images that you know that will be show only once.
-     *
-     * @return
-     */
-    public static ImageLoader getImageLoader() {
-        if (imageLoader != null) {
-            return imageLoader;
-        } else {
-            throw new IllegalStateException("ImageLoader not initialized");
-        }
-    }
+	/**
+	 * Returns instance of ImageLoader initialized with {@see FakeImageCache}
+	 * which effectively means that no memory caching is used. This is useful
+	 * for images that you know that will be show only once.
+	 *
+	 * @return
+	 */
+	public static ImageLoader getImageLoader()
+	{
+		if (imageLoader != null)
+		{
+			return imageLoader;
+		}
+		else
+		{
+			throw new IllegalStateException("ImageLoader not initialized");
+		}
+	}
 }

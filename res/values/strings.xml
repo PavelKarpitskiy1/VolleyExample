@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <resources>
-
     <string name="app_name">Volley Example</string>
-    <string name="start1">Send request</string>
-
+    <string name="btn_send">Send request</string>
+    <string name="score_divider">&#160;:&#160;</string>
+    <string name="lbl_current_score">Current score:</string>
+    <string name="default_score">0</string>
+    <string name="btn_reset">Reset game</string>
 </resources>
